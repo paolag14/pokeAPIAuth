@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root "static_pages#home"
+  #root "pokemons#index"
+  get "view_account", to: "users#view_account", as: "view_account"
+  
+  resources :pokemons
+
   post "sign_up", to: "users#create"
   get "sign_up", to: "users#new"
   put "account", to: "users#update"

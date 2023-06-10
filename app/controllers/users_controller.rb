@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def view_account
+    @user = current_user
+    # Additional logic if needed
+  end
+
   def update
     @user = current_user
     @active_sessions = @user.active_sessions.order(created_at: :desc)

@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>PokeAPI Home</title>
+</head>
+<body>
+<style>
+body{
+  background-image: url('https://images8.alphacoders.com/849/849531.jpg');
+  font-family: Verdana, sans-serif;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.logout-button {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: blue;
+    border: 2px solid black;
+    padding: 5px;
+    margin-top: 10px;
+  }
+</style>
+<script>
+  function toggleDisplay(){
+      var y = document.getElementById("button");
+      y.style.display = "none";
+  }
+</script>
+<h1 align="center">
+<font color="#FFFFFF">Welcome to Team 16's PokeApi webpage :)</font>
+</h1>
+<div align="center">
+  <img style="width:300px;height:100px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"/>
+  <p style="font-size:22px;font-weight:bold;">Create your own Pokemon Team to conquer the Pokemon League!</p>
+  <p style="font-size:18px">Press this button to know your random 5 Pokemon that will go with you on your trip to becoming the best Pokemon Trainer!</p>
+  <p style="font-size:18px">You can repress the button to create a different team. </p>
+  <div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
+    <%= button_to "Log out", destroy_all_active_sessions_path, method: :delete, class: "logout-button" %>
+    <%= button_to "View Account", account_path, method: :get, class: "logout-button" %>
+
+  </div>
+  <br></br>
+
+  <%= link_to "Create My Pokemon Team!", new_pokemon_path, :style=>'font-weight:bold;text-transform:uppercase;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: blue;'%>
+</div>
+</br>
+<div style="display:flex;flex-direction:row;align-items:flex-start;width:100%;padding-bottom:45px;" align="center";>
+  <% @pokemons.each do |pokemon| %>
+    <div style="margin:auto;border:2px solid black;padding-left:58px;padding-right:58px;padding-top:auto;padding-bottom:45px;border-radius:15px;background-image: url(https://i.pinimg.com/564x/65/86/9c/65869c5405d1b266ae9cfac018735431.jpg); background-size: cover;">
+      <p>
+        <h4 style="text-transform:capitalize;font-weight:bold;font-size:10px;"><%= pokemon.name%> | #<%= pokemon.pokedex_number %></h4>
+      </p>
+      <p id="sprite">
+        <img style="width:150px;height:150px;" src=<%= pokemon.sprites%>>
+      </p>
+      <p id="types" style="text-transform:capitalize;"><%= pokemon.types%></p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png" style="width:30px;height:30px">
+      <p style="text-transform:capitalize;"><%=link_to pokemon.name, pokemon, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;'%></p>
+    </div>
+  <% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <style>
+      body{
+        background-image: url('https://images8.alphacoders.com/849/849531.jpg');
+      }
+    </style>
+    <div style="display:flex;flex-direction:row;align-items:center;width:100%;" align="center";>
+      <div style="margin:auto;border:2px solid black;padding-left:75px;padding-right:75px;padding-top:auto;padding-bottom:200px;border-radius:20px;background-image: url(https://i.pinimg.com/564x/65/86/9c/65869c5405d1b266ae9cfac018735431.jpg); background-size: cover;margin-top:50px;">
+        <div align="center">
+          <h2 style="text-transform:capitalize;">
+            <%= @pokemon.name%> | #<%= @pokemon.pokedex_number%>
+          </h2>
+          <img src=<%= @pokemon.sprites%> style="width:200;height:200px">
+          <br>
+          <p style="text-transform:capitalize;font-size:30px;margin-top:80px;"> 
+            <%= @pokemon.types%>
+          </p>
+          <div>
+            <%= link_to "Replace This Pokemon", edit_pokemon_path(@pokemon), :style=>'color: white;border:2px solid black;background-color: blue;padding-left:3px;padding-right:3px;padding-top:3px;padding-bottom:3px;'%>
+            <%= link_to "Delete This Pokemon", pokemon_path(@pokemon), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"}, :style=>'color: white;border:2px solid black;background-color: red;padding-left:3px;padding-right:3px;padding-top:3px;padding-bottom:3px;'%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div align="center" style="margin-top:20px">
+      <%= link_to "Return to Home", root_path, :style=>'color: white;border:2px solid black;background-color: grey;padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;font-weight:bold;font-size:25px;'%>
+    </div>
+  </body>
+</html>
