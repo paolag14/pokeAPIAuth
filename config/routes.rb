@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root "static_pages#home"
   #root "pokemons#index"
+  #root to: ->(env) { ApplicationController.new().current_user ? pokemons_path : "sessions#new" }
+
   get "view_account", to: "users#view_account", as: "view_account"
-  
+
   resources :pokemons
 
   post "sign_up", to: "users#create"
