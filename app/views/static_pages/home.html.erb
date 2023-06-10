@@ -1,6 +1,7 @@
 <h1>StaticPages#home</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
 <% if current_user %>
+  <p>Welcome back, <%= current_user.email %>!</p>
   <%= link_to "Go to Pokemon Index", pokemons_path, class: "btn btn-primary" %>
 <% else %>
   <p>Please log in to access the Pokemon Index.</p>
