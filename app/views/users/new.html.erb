@@ -11,7 +11,7 @@ body{
 </style>
 <div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:200px;padding-bottom:200px;border-radius:15px;background-image: url(https://e0.pxfuel.com/wallpapers/711/753/desktop-wallpaper-minimal-walls-for-pokemon-fans-collected-and-edited-by-me-share-and-enjoy.jpg); background-size: cover;">
   <%= form_with model: @user, url: sign_up_path do |form| %>
-  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <%= render partial: "shared/form_errors", locals: { object: form.object }, :style=>'font-weight:bold;font-size:15px;color:white;'%>
   <h1 align="center", style="color: white;">SIGN UP</h1>
   <div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:50px;padding-bottom:50px;border-radius:15px;background-color: white; background-size: cover;">
   <div>

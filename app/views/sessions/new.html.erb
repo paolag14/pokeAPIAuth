@@ -12,7 +12,7 @@ body{
 <div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:200px;padding-bottom:200px;border-radius:15px;background-image: url(https://e0.pxfuel.com/wallpapers/711/753/desktop-wallpaper-minimal-walls-for-pokemon-fans-collected-and-edited-by-me-share-and-enjoy.jpg); background-size: cover;">
   <%= form_with url: login_path, scope: :user do |form| %>
   <% if flash[:alert] %>
-    <div class="alert alert-danger">
+    <div style='font-weight:bold;font-size:15px;color:white;', class="alert alert-danger">
       <%= flash[:alert] %>
     </div>
   <% end %>
