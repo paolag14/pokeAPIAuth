@@ -7,21 +7,26 @@ class PasswordsController < ApplicationController
       if @user.present?
         if @user.confirmed?
           @user.send_password_reset_email!
-          redirect_to root_path, notice: "If that user exists we've sent instructions to their email."
+          redirect_to root_path, notice: "<div style='background-color: blue; color: white;'>If that user exists we've sent instructions to their email.</div>".html_safe
+
         else
-          redirect_to new_confirmation_path, alert: "Please confirm your email first."
+          redirect_to new_confirmation_path, alert: "<div style='background-color: red; color: white;'>Please confirm your email first.</div>".html_safe
+
         end
       else
-        redirect_to root_path, notice: "If that user exists we've sent instructions to their email."
+        redirect_to root_path, notice: "<div style='background-color: blue; color: white;'>If that user exists we've sent instructions to their email.</div>".html_safe
+
       end
     end
   
     def edit
       @user = User.find_signed(params[:password_reset_token], purpose: :reset_password)
       if @user.present? && @user.unconfirmed?
-        redirect_to new_confirmation_path, alert: "You must confirm your email before you can sign in."
+        redirect_to new_confirmation_path, alert: "<div style='background-color: red; color: white;'>You must confirm your email before you can sign in.</div>".html_safe
+
       elsif @user.nil?
-        redirect_to new_password_path, alert: "Invalid or expired token."
+        redirect_to new_password_path, alert: "<div style='background-color: red; color: white;'>Invalid or expired token.</div>".html_safe
+
       end
     end
   
@@ -32,7 +37,7 @@ class PasswordsController < ApplicationController
       @user = User.find_signed(params[:password_reset_token], purpose: :reset_password)
       if @user
         if @user.unconfirmed?
-          redirect_to new_confirmation_path, alert: "You must confirm your email before you can sign in."
+          redirect_to new_confirmation_path, alert: "<div style='background-color: red; color: white;'>You must confirm your email before you can sign in.</div>".html_safe
         elsif @user.update(password_params)
           redirect_to login_path, notice: "Sign in."
         else
@@ -40,7 +45,8 @@ class PasswordsController < ApplicationController
           render :edit, status: :unprocessable_entity
         end
       else
-        flash.now[:alert] = "Invalid or expired token."
+        flash.now[:alert] = "<div style='background-color: red; color: white;'>Invalid or expired token.</div>".html_safe
+        
         render :new, status: :unprocessable_entity
       end
     end

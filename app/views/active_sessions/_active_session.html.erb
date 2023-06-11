@@ -1,7 +1,19 @@
 <!-- app/views/active_sessions/_active_session.html.erb -->
+<style>
+.logout-button {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: red;
+    border: 2px solid black;
+    padding: 5px;
+    margin-top: 10px;
+}
+</style>
 <tr>
   <td><%= active_session.user_agent %></td>
   <td><%= active_session.ip_address %></td>
   <td><%= active_session.created_at %></td>
-  <td><%= button_to "Sign Out", active_session_path(active_session), method: :delete %></td>
+  <td><%= button_to "Sign Out", active_session_path(active_session), method: :delete, class: "logout-button" %></td>
+
 </tr>

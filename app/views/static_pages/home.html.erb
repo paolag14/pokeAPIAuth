@@ -12,14 +12,14 @@ body{
 <% if current_user %>
 <div align="center";>
 <font color="#FFFFFF"><h1>Welcome back, <%= current_user.email %>!</h1></font>
-  <%= link_to "Go to Pokemon Index", pokemons_path, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;', class: "btn btn-primary" %>
+  <%= link_to "Go to Pokemon Index", pokemons_path, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: green;', class: "btn btn-primary" %>
 <% else %>
   <div align="center";>
   <img style="width:900px;height:300px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"/>
   <p style="font-size:22px;font-weight:bold;">Welcome to the Pokedex!</p>
   <p style="font-size:18px">Please log in to access your Pokemon</p>
   <div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
-  <%= link_to "Log in", login_path, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;', class: "btn btn-primary" %>
+  <%= link_to "Log in", login_path, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: green;', class: "btn btn-primary" %>
 
   </div>
 <% end %>

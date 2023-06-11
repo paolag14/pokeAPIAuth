@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     forget_active_session
     logout
-    redirect_to root_path, notice: "Signed out."
+    redirect_to root_path, notice: "<div style='background-color: red; color: white;'>Signed out.</div>".html_safe
   end
 
   def new

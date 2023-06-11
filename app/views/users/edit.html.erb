@@ -1,50 +1,67 @@
 <!-- app/views/users/edit.html.erb -->
 <style>
-body{
+body {
   background-image: url('https://images8.alphacoders.com/849/849531.jpg');
   font-family: Consolas, sans-serif;
 }
+.logout-button {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: red;
+    border: 2px solid black;
+    padding: 5px;
+    margin-top: 10px;
+}
 </style>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png" style="position: relative;width:60px;height:60px;">
-<div style="position: absolute; top: 25px;left: 80px;">
-<%= form_with model: @user, url: account_path, method: :put do |form| %>
-  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
-  <div>
-    <%= form.label :email, "Current Email", :style=>'font-weight:bold;font-size:15px;'%>
-    <%= form.email_field :email, disabled: true %>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png" style="position: relative; width: 60px; height: 60px;">
+<div style="display: flex; justify-content: flex-start; align-items: flex-start; padding-top: 20px;">
+  <%= link_to "Return to Home", pokemons_path, :style=>'color: white;border:2px solid black;background-color: grey;padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;font-weight:bold;font-size:15px;'%>
+</div>
+
+
+<div style="position: absolute; top: 25px; left: 80px;">
+  <%= form_with model: @user, url: account_path, method: :put do |form| %>
+    <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+    
+    <div>
+      <%= form.label :email, "Current Email", :style=>'font-weight:bold;font-size:15px;' %>
+      <%= form.email_field :email, disabled: true %>
+    </div>
+    <div style="position: relative; top: 100px; left: 180px;">
+      <div style="padding-bottom: 50px;">
+        <%= form.label :unconfirmed_email, "New Email Address", :style=>'font-weight:bold;font-size:25px;' %>
+        <%= form.text_field :unconfirmed_email, :style=>'background-color: transparent'; %>
+      </div>
+      <div>
+        <%= form.label :password, "New Password", :style=>'font-weight:bold;font-size:25px;' %>
+        <%= form.password_field :password, :style=>'background-color: transparent' %>
+      </div>
+      <div style="padding-bottom: 15px;">
+        <%= form.label :password, "(leave blank if you don't want to change it)", :style=>'font-weight:bold;font-size:14px;' %>
+      </div>
+      <div>
+        <%= form.label :password_confirmation, "Confirm New Password", :style=>'font-weight:bold;font-size:25px;' %>
+        <%= form.password_field :password_confirmation, :style=>'background-color: transparent' %>
+      </div>
+      <div style="padding-top: 50px;">
+        <%= form.label :current_password, "Current Password", :style=>'font-weight:bold;font-size:25px;' %>
+        <%= form.password_field :current_password, required: true, :style=>'background-color: transparent' %>
+      </div>
+      <div>
+        <%= form.label :current_password, "(we need your current password to confirm your changes)", :style=>'font-weight:bold;font-size:14px;' %>
+      </div>
+      <div style="padding-top: 50px;">
+        <%= form.submit "Update Account", :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: green;' %>
+      </div>
+    </div>
   </div>
-  <div style="position: relative; top: 100px;left: 180px;">
-  <div style="padding-bottom: 50px;">
-    <%= form.label :unconfirmed_email, "New Email Address", :style=>'font-weight:bold;font-size:25px;'%>
-    <%= form.text_field :unconfirmed_email, :style=>'background-color: transparent';%>
-  </div>
-  <div>
-    <%= form.label :password, "New Password", :style=>'font-weight:bold;font-size:25px;'%>
-    <%= form.password_field :password, :style=>'background-color: transparent'%>
-  </div>
-  <div style="padding-bottom: 15px;">
-    <%= form.label :password, "(leave blank if you don't want to change it)", :style=>'font-weight:bold;font-size:14px;'%>
-  </div>
-  <div>
-    <%= form.label :password_confirmation, "Confirm New Password",:style=>'font-weight:bold;font-size:25px;'%>
-    <%= form.password_field :password_confirmation, :style=>'background-color: transparent'%>
-  </div>
-  <div style="padding-top: 50px;">
-    <%= form.label :current_password, "Current Password", :style=>'font-weight:bold;font-size:25px;'%>
-    <%= form.password_field :current_password, required: true, :style=>'background-color: transparent'%>
-  </div>
-  <div>
-    <%= form.label :current_password, "(we need your current password to confirm your changes)", :style=>'font-weight:bold;font-size:14px;'%>
-  </div>
-  <div style="padding-top: 50px;">
-  <%= form.submit "Update Account", :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;'  %>
-  </div>
-  </div>
-  </div>
-  <div style="position: absolute; bottom: 100px;left: 255px;border:2px solid black;padding-left:5px;padding-right:5px;background-color:white;">
+</div>
+<div style="position: absolute; top: 550px; left: 255px; border:2px solid black; padding-left:5px; padding-right:5px; background-color:white;">
   <h2>Current Logins</h2>
   <% if @active_sessions.any? %>
-    <%= button_to "Log out of all other sessions", destroy_all_active_sessions_path, method: :delete, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;'  %>
+    <%= button_to "Log out of all sessions", destroy_all_active_sessions_path, method: :delete, class: "logout-button" %>
+
     <table>
       <thead>
         <tr>
@@ -55,12 +72,11 @@ body{
         </tr>
       </thead>
       <tbody>
-        <%= render @active_sessions%>
+        <%= render @active_sessions %>
       </tbody>
-      <br></br>
     </table>
     <br></br>
   </div>
-  <img src="https://ssb.wiki.gallery/images/thumb/a/a0/FRLGMaleTrainer.png/1200px-FRLGMaleTrainer.png", align="right">
-<% end %>
+  <img src="https://ssb.wiki.gallery/images/thumb/a/a0/FRLGMaleTrainer.png/1200px-FRLGMaleTrainer.png" align="right">
+  <% end %>
 <% end %>

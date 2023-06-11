@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(create_user_params)
     if @user.save
       @user.send_confirmation_email!
-      redirect_to root_path, notice: "Please check your email for confirmation instructions."
+      redirect_to root_path, notice: "<div style='background-color: blue; color: white;'>Please check your email for confirmation instructions..</div>".html_safe
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,9 +39,10 @@ class UsersController < ApplicationController
       if @user.update(update_user_params)
         if params[:user][:unconfirmed_email].present?
           @user.send_confirmation_email!
-          redirect_to root_path, notice: "Check your email for confirmation instructions."
+          redirect_to root_path, notice: "<div style='background-color: red; color: white;'>Check your email for confirmation instructions.</div>".html_safe
         else
-          redirect_to root_path, notice: "Account updated."
+          redirect_to root_path, notice: "<div style='background-color: blue; color: white;'>Account updated.</div>".html_safe
+
         end
       else
         render :edit, status: :unprocessable_entity
