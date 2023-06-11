@@ -20,10 +20,14 @@ body{
   <div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:50px;padding-bottom:50px;border-radius:15px;background-color: white; background-size: cover;">
   <div>
     <%= form.label :"email:", :style=>'font-weight:bold;font-size:15px;'%>
+  </div>
+  <div>
     <%= form.email_field :email, required: true, :style=>'' %>
   </div>
   <div>
     <%= form.label :"password:", :style=>'font-weight:bold;font-size:15px;'%>
+  </div>
+  <div>
     <%= form.password_field :password, required: true, :style=>'' %>
   </div>
   <br></br>
