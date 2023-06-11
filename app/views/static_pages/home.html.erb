@@ -1,9 +1,26 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<style>
+body{
+  background-image: url('https://images8.alphacoders.com/849/849531.jpg');
+  font-family: Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+</style>
+
 <% if current_user %>
-  <p>Welcome back, <%= current_user.email %>!</p>
-  <%= link_to "Go to Pokemon Index", pokemons_path, class: "btn btn-primary" %>
+<div align="center";>
+<font color="#FFFFFF"><h1>Welcome back, <%= current_user.email %>!</h1></font>
+  <%= link_to "Go to Pokemon Index", pokemons_path, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;', class: "btn btn-primary" %>
 <% else %>
-  <p>Please log in to access the Pokemon Index.</p>
-  <%= link_to "Log in", login_path, class: "btn btn-primary" %>
+  <div align="center";>
+  <img style="width:900px;height:300px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"/>
+  <p style="font-size:22px;font-weight:bold;">Welcome to the Pokedex!</p>
+  <p style="font-size:18px">Please log in to access your Pokemon</p>
+  <div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
+  <%= link_to "Log in", login_path, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;', class: "btn btn-primary" %>
+
+  </div>
 <% end %>
+

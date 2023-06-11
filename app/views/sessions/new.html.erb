@@ -1,21 +1,42 @@
 <!-- app/views/sessions/new.html.erb -->
-<%= form_with url: login_path, scope: :user do |form| %>
+<style>
+body{
+  background-image: url('https://images8.alphacoders.com/849/849531.jpg');
+  font-family: Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+</style>
+<div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:200px;padding-bottom:200px;border-radius:15px;background-image: url(https://e0.pxfuel.com/wallpapers/711/753/desktop-wallpaper-minimal-walls-for-pokemon-fans-collected-and-edited-by-me-share-and-enjoy.jpg); background-size: cover;">
+  <%= form_with url: login_path, scope: :user do |form| %>
   <% if flash[:alert] %>
     <div class="alert alert-danger">
       <%= flash[:alert] %>
     </div>
   <% end %>
+  <br></br>
+  <div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:50px;padding-bottom:50px;border-radius:15px;background-color: white; background-size: cover;">
   <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, required: true %>
+    <%= form.label :"email:", :style=>'font-weight:bold;font-size:15px;'%>
   </div>
   <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
+    <%= form.email_field :email, required: true, :style=>'' %>
   </div>
   <div>
-    <%= form.label :remember_me %>
+    <%= form.label :"password:", :style=>'font-weight:bold;font-size:15px;'%>
+  </div>
+  <div>
+    <%= form.password_field :password, required: true, :style=>'' %>
+  </div>
+  <br></br>
+  <div>
+    <%= form.label :remember_me, :style=>'font-weight:bold;font-size:15px;'%>
     <%= form.check_box :remember_me %>
   </div>
-  <%= form.submit "Sign In" %>
+  </div>
+  <br></br>
+  <%= form.submit "Sign In", :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;' %>
 <% end %>
+</div>

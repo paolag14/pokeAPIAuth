@@ -1,44 +1,66 @@
 <!-- app/views/users/edit.html.erb -->
+<style>
+body{
+  background-image: url('https://images8.alphacoders.com/849/849531.jpg');
+  font-family: Consolas, sans-serif;
+}
+</style>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png" style="position: relative;width:60px;height:60px;">
+<div style="position: absolute; top: 25px;left: 80px;">
 <%= form_with model: @user, url: account_path, method: :put do |form| %>
   <%= render partial: "shared/form_errors", locals: { object: form.object } %>
   <div>
-    <%= form.label :email, "Current Email" %>
+    <%= form.label :email, "Current Email", :style=>'font-weight:bold;font-size:15px;'%>
     <%= form.email_field :email, disabled: true %>
   </div>
-  <div>
-    <%= form.label :unconfirmed_email, "New Email" %>
-    <%= form.text_field :unconfirmed_email %>
+  <div style="position: relative; top: 100px;left: 180px;">
+  <div style="padding-bottom: 50px;">
+    <%= form.label :unconfirmed_email, "New Email Address", :style=>'font-weight:bold;font-size:25px;'%>
+    <%= form.text_field :unconfirmed_email, :style=>'background-color: transparent';%>
   </div>
   <div>
-    <%= form.label :password, "Password (leave blank if you don't want to change it)" %>
-    <%= form.password_field :password %>
+    <%= form.label :password, "New Password", :style=>'font-weight:bold;font-size:25px;'%>
+    <%= form.password_field :password, :style=>'background-color: transparent'%>
+  </div>
+  <div style="padding-bottom: 15px;">
+    <%= form.label :password, "(leave blank if you don't want to change it)", :style=>'font-weight:bold;font-size:14px;'%>
   </div>
   <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
+    <%= form.label :password_confirmation, "Confirm New Password",:style=>'font-weight:bold;font-size:25px;'%>
+    <%= form.password_field :password_confirmation, :style=>'background-color: transparent'%>
   </div>
-  <hr/>
+  <div style="padding-top: 50px;">
+    <%= form.label :current_password, "Current Password", :style=>'font-weight:bold;font-size:25px;'%>
+    <%= form.password_field :current_password, required: true, :style=>'background-color: transparent'%>
+  </div>
   <div>
-    <%= form.label :current_password, "Current password (we need your current password to confirm your changes)" %>
-    <%= form.password_field :current_password, required: true %>
+    <%= form.label :current_password, "(we need your current password to confirm your changes)", :style=>'font-weight:bold;font-size:14px;'%>
   </div>
-  <%= form.submit "Update Account" %>
-
+  <div style="padding-top: 50px;">
+  <%= form.submit "Update Account", :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;'  %>
+  </div>
+  </div>
+  </div>
+  <div style="position: absolute; bottom: 100px;left: 255px;border:2px solid black;padding-left:5px;padding-right:5px;background-color:white;">
   <h2>Current Logins</h2>
   <% if @active_sessions.any? %>
-    <%= button_to "Log out of all other sessions", destroy_all_active_sessions_path, method: :delete %>
+    <%= button_to "Log out of all other sessions", destroy_all_active_sessions_path, method: :delete, :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;'  %>
     <table>
       <thead>
         <tr>
-          <th>User Agent</th>
-          <th>IP Address</th>
-          <th>Signed In At</th>
-          <th>Sign Out</th>
+          <th style="border:2px solid black;padding-left:5px;padding-right:5px;">User Agent</th>
+          <th style="border:2px solid black;padding-left:5px;padding-right:5px;">IP Address</th>
+          <th style="border:2px solid black;padding-left:5px;padding-right:5px;">Signed In At</th>
+          <th style="border:2px solid black;padding-left:5px;padding-right:5px;">Sign Out</th>
         </tr>
       </thead>
       <tbody>
-        <%= render @active_sessions %>
+        <%= render @active_sessions%>
       </tbody>
+      <br></br>
     </table>
+    <br></br>
+  </div>
+  <img src="https://ssb.wiki.gallery/images/thumb/a/a0/FRLGMaleTrainer.png/1200px-FRLGMaleTrainer.png", align="right">
 <% end %>
 <% end %>
