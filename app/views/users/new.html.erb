@@ -1,17 +1,32 @@
 <!-- app/views/users/new.html.erb -->
-<%= form_with model: @user, url: sign_up_path do |form| %>
+<style>
+body{
+  background-image: url('https://images8.alphacoders.com/849/849531.jpg');
+  font-family: Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+</style>
+<div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:200px;padding-bottom:200px;border-radius:15px;background-image: url(https://e0.pxfuel.com/wallpapers/711/753/desktop-wallpaper-minimal-walls-for-pokemon-fans-collected-and-edited-by-me-share-and-enjoy.jpg); background-size: cover;">
+  <%= form_with model: @user, url: sign_up_path do |form| %>
   <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <h1 align="center", style="color: white;">SIGN UP</h1>
+  <div style="margin:auto;border:2px solid black;padding-left:70px;padding-right:70px;padding-top:50px;padding-bottom:50px;border-radius:15px;background-color: white; background-size: cover;">
   <div>
-    <%= form.label :email %>
+    <%= form.label :email, :style=>'font-weight:bold;font-size:15px;'%>
     <%= form.email_field :email, required: true %>
   </div>
   <div>
-    <%= form.label :password %>
+    <%= form.label :password, :style=>'font-weight:bold;font-size:15px;'%>
     <%= form.password_field :password, required: true %>
   </div>
   <div>
-    <%= form.label :password_confirmation %>
+    <%= form.label :password_confirmation, :style=>'font-weight:bold;font-size:15px;'%>
     <%= form.password_field :password_confirmation, required: true %>
   </div>
-  <%= form.submit "Sign Up" %>
+  <%= form.submit "Sign Up", :style=>'font-weight:bold;color: white;border:2px solid black;padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;background-color: red;'%>
 <% end %>
+  </div>
+</div>
